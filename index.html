@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body data-theme="light">
+    <main>
+      <header>
+        <div class="wrapper">
+          <div class="left">
+            <div class="img-container">
+              <img src="./images/logo.png" alt="task flow logo" />
+            </div>
+            <h1>TaskFlow</h1>
+          </div>
+
+          <!-- theme button  -->
+          <button id="theme-toggle" type="button">
+            <span class="toggle-thumb">
+              <i class="ri-sun-line"></i>
+            </span>
+          </button>
+        </div>
+      </header>
+
+      <!-- main section for task manager  -->
+      <section class="task-manager">
+        <div class="content">
+          <div class="top">
+            <div class="left">
+              <p class="header-date">LOADING DATE...</p>
+              <h2>My Tasks</h2>
+              <p>Manage your day, one task at a time.</p>
+            </div>
+            <div class="right">
+              <button class="header-add-task-btn">
+                <i class="ri-add-line"></i>
+                <span>Add task</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- stats section  -->
+      <section class="stats-section">
+        <div class="stats-wrapper">
+          <div class="stat-card total-task">
+            <h3 class="stat-card-number">0</h3>
+            <span class="stat-card-title">Total</span>
+          </div>
+
+          <div class="stat-card completed-task">
+            <h3 class="stat-card-number">0</h3>
+            <span class="stat-card-title">Completed</span>
+          </div>
+
+          <div class="stat-card pending-task">
+            <h3 class="stat-card-number">0</h3>
+            <span class="stat-card-title">Pending</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- form input section  -->
+      <section class="task-action-container">
+        <div class="task-action-wrapper">
+          <!-- row 1  start-->
+          <div class="row-1">
+            <h2>Add New task</h2>
+            <form id="add-task-form">
+              <!-- task input start -->
+              <input
+                type="text"
+                class="add-task-input"
+                placeholder="Task title..."
+                required
+                minlength="5"
+              />
+              <!-- task input end -->
+
+              <!-- category start  -->
+              <div class="select-wrapper">
+                <select required id="task-category-select">
+                  <option value="" disabled selected>
+                    <span>Category</span>
+                    <i class="ri-arrow-drop-down-fill"></i>
+                  </option>
+                  <option value="Work">Work</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Urgent">Urgent</option>
+                  <option value="Study">Study</option>
+                </select>
+                <i class="ri-arrow-drop-down-fill"></i>
+              </div>
+
+              <!-- add task btn  -->
+              <button type="submit" class="add-task-btn">
+                <i class="ri-add-line"></i>
+                <span>Add task</span>
+              </button>
+
+              <!-- category end  -->
+            </form>
+          </div>
+          <!-- row 1  end-->
+
+          <!-- row 2 start  -->
+          <div class="row-2">
+            <h2>Search & Filter tasks</h2>
+            <div class="row2-wrapper">
+              <input
+                type="search"
+                id="search-task-input"
+                placeholder="Search tasks"
+                required
+              />
+
+              <div class="select-wrapper">
+                <select required id="task-category-select" >
+                  <option value="all" disabled selected>
+                    <span>All Category</span>
+                    <i class="ri-arrow-drop-down-fill"></i>
+                  </option>
+                  <option value="Work">Work</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Urgent">Urgent</option>
+                  <option value="Study">Study</option>
+                </select>
+                <i class="ri-arrow-drop-down-fill"></i>
+              </div>
+
+              <button type="button" id="clear-all-btn">Clear all</button>
+            </div>
+          </div>
+          <!-- row 2 end  -->
+        </div>
+      </section>
+
+      <!-- now section for containng actual task card  -->
+      <section class="task-container">
+        <div class="task-container-wrapper">
+          <div class="task-grid"></div>
+        </div>
+      </section>
+
+      <!-- second section for showng bubbling and capturing  -->
+
+      <section class="show-propagation-demo">
+        <div class="show-demo-wrapper">
+          <div class="demo-badge">
+            <span>Event propagation demo</span>
+          </div>
+          <div class="panels">
+            <div class="demo-panel">
+              <div class="actual-demo">
+                <div class="grand-parent">
+                  <span>GrandParent</span>
+                  <div class="parent">
+                    <span>Parent</span>
+                    <div class="child">
+                      <span>Child</span>
+                      <button id="#clickme">Click me</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="demo-btns">
+                <button id="bubble">Bubbling</button>
+                <button id="capture">Capturing</button>
+              </div>
+            </div>
+            <div class="console-panel">
+              <h3>Console log output</h3>
+              <div class="console-output"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- third last section for showing browser rendering visuals  -->
+      <section class="browser-redering">
+        <div class="wrapper">
+          <div class="top-badge">
+            <span>Browser rendering pipeline</span>
+          </div>
+
+          <div class="pipeline-container">
+
+            <div class="pipeline-column">
+              <div class="pipeline-node node-html">HTML</div>
+              <div class="pipeline-arrow-down">↓</div>
+
+              <div class="pipeline-node node-parsing">Parsing</div>
+              <div class="pipeline-arrow-down">↓</div>
+
+              <div class="pipeline-node node-tokenization">Tokenization</div>
+              <div class="pipeline-arrow-down">↓</div>
+
+              <div class="pipeline-node node-dom">DOM tree</div>
+            </div>
+
+
+            <!-- Connection Indicator for Desktop Layout -->
+            <div class="desktop-connector-left">➔</div>
+
+            <!-- Column 2: CSS Pipeline Section -->
+            <div class="pipeline-column">
+              <div class="pipeline-node node-css">CSS</div>
+              <div class="pipeline-arrow-down">↓</div>
+
+              <div class="pipeline-node node-cssom">CSSOM tree</div>
+            </div>
+
+            <!-- Connection Indicator for Desktop Layout -->
+            <div class="desktop-connector-right">➔</div>
+
+            <!-- Column 3: Merge & Destination Section -->
+            <div class="pipeline-column merge-column">
+              <span class="merge-label">merge ↓</span>
+              <div class="pipeline-node node-render">Render tree</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+  </body>
+</html>
